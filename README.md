@@ -1,24 +1,48 @@
-# README
+## Usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column  |Type  |Options                  |
+|--------|------|-------------------------|
+|nickname|string|null: false, unique: true|
+|email   |string|null: false, unique: true|
+|password|string|null: false              |
 
-Things you may want to cover:
+### Association
+- has_many :cookings
+- has_many :favorites
 
-* Ruby version
+## Cookingsテーブル
 
-* System dependencies
+|Column        |Type      |Options                       |
+|--------------|----------|------------------------------|
+|cooking_name  |string    |null: false                   |
+|category_id   |integer   |null: false                   |
+|user_id       |references|null: false, foreign_key: true|
 
-* Configuration
+### Association
+- belongs_to :user
+- has_many :favorites
+- has_one :recipe
 
-* Database creation
+## Favoritesテーブル
 
-* Database initialization
+|Column    |Type   |Options                       |
+|----------|-------|------------------------------|
+|user_id   |integer|null: false, foreign_key: true|
+|cooking_id|integer|null: false, foreign_key: true|
 
-* How to run the test suite
+### Association
+- belongs_to :user, dependent: :destroy
+- belongs_to :cooking, dependent: :destroy
 
-* Services (job queues, cache servers, search engines, etc.)
+## Recipesテーブル
 
-* Deployment instructions
+|Column    |Type   |Options                       |
+|----------|-------|------------------------------|
+|plate     |integer|null: false                   |
+|ingredient|text   |null: false                   |
+|process   |text   |null: false                   |
+|duration  |integer|null: false                   |
+|cooking_id|integer|null: false, foreign_key: true|
 
-* ...
+### Association
+- belongs_to :cooking, dependent: :destroy
