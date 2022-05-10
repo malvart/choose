@@ -4,14 +4,20 @@
 
       <div class='heading'>
         <div class='heading-text'>Chooseが、<br>あなたの晩ごはんを<br>選びます。</div>
-        <br>
+
+
         <div class='rog-in-confirmation'>
-          <a href='#'>ログイン</a>
-          <a href='#'>サインアップ</a>
+          <% if user_signed_in? %>
+          <%= link_to 'マイページ', '#' %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+          <% else %>
+          <%= link_to 'ログイン', new_user_session_path %>
+          <%= link_to 'サインアップ', new_user_registration_path %>
+          <% end %>
         </div>
       </div>
 
-<%
+      <%
 =begin
 %>
 
@@ -130,11 +136,11 @@
         </div>
       </div>
 
-    </div>
-
-<%
+      <%
 =end
 %>
+
+    </div>
 
   </div>
 
