@@ -1,0 +1,191 @@
+a {
+  text-decoration: none;
+}
+
+.main {
+  background-color: #f8f4e6; //アイボリー
+  min-height: calc(100vh - 90px - 100px);
+
+  .top-contents {
+    display: flex;
+    justify-content: center;
+
+    height: auto;
+    width: 100vw;
+    padding: 30px 0;
+  }
+
+  #main-flame {
+    border: 2px dashed #192f6050; //アイアンブルー
+    border-radius: 30px;
+    padding: 25px 30px;
+  }
+
+  .main-content {
+    width: 750px;
+  }
+
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px 10px;
+    font-family: '凸版文久見出しゴシック';
+    color: #001e43; //ミッドナイトブルー
+
+    .heading-text {
+      font-size: 36px;
+    }
+
+    .rog-in-confirmation {
+      display: flex;
+      font-size: 18px;
+      align-self: flex-end;
+
+      a {
+        background-color: #ffedab;
+        color: #001e43; //ミッドナイトブルー
+        margin: 1px 5px;
+        border-top: 1.5px solid #001e43df;
+        border-left: 1.5px solid #001e43df;
+        border-bottom: 3.3px solid #001e43df;
+        border-right: 3.3px solid #001e43df;
+        border-radius: 15px;
+        padding: 0 8px;
+      }
+    }
+  }
+
+  .main-text {
+    margin-top: 10px;
+    background-color: #bccddb; //パウダーブルー
+    height: auto;
+    width: 720px;
+    font-size: 18px;
+    font-family: '筑紫A丸ゴシック';
+    font-weight: bold;
+
+    .new-cooking {
+      text-align: center;
+      padding-bottom: 20px;
+      margin-bottom: 10px;
+      border-bottom: 2px dotted #001e43;
+
+      a {
+        background-color: #f8f4e6;
+        color: black;
+        padding: 6px 10px 7px;
+        border: 1.5px solid #00000080;
+        border-radius: 5px;
+      }
+    }
+
+    .lists-heading {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .name-lists {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 20px;
+      text-align: center;
+
+      .list-heading {
+        margin-bottom: 3px;
+      }
+
+      #lists {
+        width: 50%;
+        padding: 10px 20px;
+
+        .scroll-lists {
+          max-height: 150px;
+          overflow-y: scroll;
+          border-left: 1.5px dashed #00000080;
+          border-right: 1.5px dashed #00000080;
+        }
+      }
+
+      #list {
+        font-size: 18px;
+      }
+
+      .show-link {
+        color: #47266e;
+      }
+    }
+  }
+
+  .side-bar {
+    .recommend {
+      background-color: #ffedab; //サンシャインイエロー
+      width: 250px;
+
+      .recommend-header {
+        font-size: 18px;
+        font-family: '筑紫A丸ゴシック';
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .recommend-content {
+        display: flex;
+        flex-direction: row;
+        width: 186px;
+        overflow: hidden;
+      }
+
+      .slide-recommend {
+        position: relative;
+        animation: slider 20s infinite ease;
+        animation-delay: 3s;
+
+        @keyframes slider {
+          0% {
+            transform: translateX(0);
+          }
+
+          25% {
+            transform: translateX(-200px);
+          }
+
+          50% {
+            transform: translateX(-400px);
+          }
+
+          75% {
+            transform: translate(-600px);
+          }
+
+          100% {
+            transform: translateX(0);
+          }
+        }
+
+        #slide-image {
+          background-color: white;
+          max-height: 123.43px;
+          width: 186px;
+          border: 1.5px solid #00000080;
+          border-radius: 5px;
+          margin-right: 14px;
+        }
+
+        .slide-name {
+          background-color: #ffffffbf;
+          color: black;
+          font-size: 14px;
+          font-family: '筑紫A丸ゴシック';
+          position: absolute;
+          bottom: 10px;
+          left: 10px;
+          padding: 0 5px;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<%= render partial: "header" %>
+<div class='top-contents'>
+  <div class='choose-content'>
+    <div class='form-title'>カテゴリーを選んでください</div>
+    <%= search_form_for @q, url: chooseSearch_cookings_path, local: true do |f| %>
+
+    <div class='form'>
+      <div class='cat'>
+        <div class='form-heading'>
+          カテゴリー
+        </div>
+        <%= f.collection_select :category_id_eq, Category.where.not(id: 1), :id, :name, include_blank: "全体から" %>
+      </div>
+    </div>
+
+    <div class='form' , id='form-cat2'>
+      <div class='cat' , id='cat2'>
+        <div class='form-heading'>
+          主食
+        </div>
+        <%= f.collection_select :staple_food_id_eq, StapleFood.where.not(id: 1), :id, :name, include_blank: "全体から" %>
+      </div>
+    </div>
+
+    <div class='form' , id='form-cat3'>
+      <div class='cat' , id='cat3'>
+        <div class='form-heading'>
+          主菜
+        </div>
+        <%= f.collection_select :main_dish_id_eq, MainDish.where.not(id: 1), :id, :name, include_blank: "全体から" %>
+      </div>
+    </div>
+
+    <div class='form' , id='form-cat4'>
+      <div class='cat' , id='cat4'>
+        <div class='form-heading'>
+          副菜
+        </div>
+        <%= f.collection_select :side_dish_id_eq, SideDish.where.not(id: 1), :id, :name, include_blank: "全体から" %>
+      </div>
+    </div>
+
+    <div class='form-btn-content'>
+      <%= f.submit 'Choose!', class:'ok-btn' %>
+    </div>
+
+    <% end %>
+  </div>
+</div>
+<%= render partial: "footer" %>

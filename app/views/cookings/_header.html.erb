@@ -1,0 +1,20 @@
+<main>
+  <div class='another-header'></div>
+  <div class='header-line'>
+    <div class='top-page-header'>
+      <%= link_to "Choose.", root_path, class: 'app-name' %>
+      <div class='header-right'>
+
+        <% if user_signed_in? %>
+        <%= link_to "お料理を決める", '#', class: 'choose-cooking' %>
+        <% else %>
+        <div class='authentication'>
+          <%= link_to "ログイン", new_user_session_path, class: 'rog-in' %>
+          <%= link_to "サインアップ", new_user_registration_path, class: 'sign-up' %>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+  <div class='main'>

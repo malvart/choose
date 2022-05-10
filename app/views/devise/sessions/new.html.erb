@@ -1,0 +1,30 @@
+<%= render partial: "cookings/header" %>
+
+<div class='registration-new-content'>
+  <div class='regi-frame'>
+    <h1>ログイン</h1>
+
+    <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :email, "メールアドレス", class: 'form-header' %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'regi-form' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, "パスワード", class: 'form-header' %>
+      <%= f.password_field :password, autocomplete: "new-password", class: 'regi-form' %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "OK", class: 'regi-btn' %>
+    </div>
+    <% end %>
+    <div class='render-links'>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
+
+<%= render partial: "cookings/footer" %>

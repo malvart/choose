@@ -1,0 +1,76 @@
+<%= render partial: "header" %>
+<div class='top-contents'>
+  <div class='new-cooking-content'>
+    <div class='form-title'>お料理に関する詳細編集</div>
+    <%= form_with model: @cooking, url: cooking_path(@cooking.id), id: 'new_cooking', local: true do |f| %>
+
+    <% if f.object.errors.any? %>
+    <div class="error-alert">
+      入力に不備があります！
+    </div>
+    <% end %>
+
+    <div class='form'>
+      <div class='cooking-name'>
+        <div class='form-heading'>
+          お料理名
+        </div>
+        <%= f.text_field :cooking_name, class:'cooking-text', placeholder:'例: ハンバーグ' %>
+      </div>
+    </div>
+
+    <div class='form'>
+      <div class='cat'>
+        <div class='form-heading'>
+          カテゴリー
+        </div>
+        <%= f.collection_select :category_id, Category.all, :id, :name, {}, {class:"select-box", id:'category'} %>
+      </div>
+    </div>
+
+    <div class='form' , id='form-cat2'>
+      <div class='cat' , id='cat2'>
+        <div class='form-heading'>
+          主食
+        </div>
+        <%= f.collection_select :staple_food_id, StapleFood.all, :id, :name, {}, {class:"select-box"} %>
+      </div>
+    </div>
+
+    <div class='form' , id='form-cat3'>
+      <div class='cat' , id='cat3'>
+        <div class='form-heading'>
+          主菜
+        </div>
+        <%= f.collection_select :main_dish_id, MainDish.all, :id, :name, {}, {class:"select-box"} %>
+      </div>
+    </div>
+
+    <div class='form' , id='form-cat4'>
+      <div class='cat' , id='cat4'>
+        <div class='form-heading'>
+          副菜
+        </div>
+        <%= f.collection_select :side_dish_id, SideDish.all, :id, :name, {}, {class:"select-box"} %>
+      </div>
+    </div>
+
+    <div class='form'>
+      <div class='img-upload'>
+        <div class='form-heading'>
+          お写真
+        </div>
+        <div class='previews', id='previews'></div>
+        <%= f.label :image, '画像を選択', class: 'img-file-btn' %>
+        <%= f.file_field :image, class:'img-file' %>
+      </div>
+    </div>
+
+    <div class='form-btn-content'>
+      <%= f.submit "入力OK!", class:'ok-btn' %>
+    </div>
+    
+    <% end %>
+  </div>
+</div>
+<%= render partial: "footer" %>
