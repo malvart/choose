@@ -1,0 +1,55 @@
+.another-header {
+  background-color: #ffedab50;
+  height: 10px;
+  width: 100vw;
+}
+
+.top-page-header {
+  background-color: #043c78; //インディゴ
+  height: 80px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 5px solid #192f60; //アイアンブルー
+  border-bottom: 5px solid #192f60;
+
+  .app-name {
+    font-size: 48px;
+    font-family: Impact;
+    color: #ffdc00; //ジョンブリアン
+    margin-right: 130px;
+  }
+
+  .header-right {
+    display: flex;
+    font-family: 'Osaka';
+    padding-top: 5px;
+
+    .choose-cooking {
+      background-color: #ffdc00;
+      font-size: 20px;
+      border: 1px solid #001e43;
+      border-radius: 15px;
+      padding: 0 12px;
+      color: #043c78;
+    }
+
+    .authentication {
+      font-size: 16px;
+
+      a {
+        color: #ffdc00;
+      }
+
+      .sign-up {
+        margin-right: 15px;
+        color: #ffdc00;
+      }
+
+      .rog-in {
+        color: #ffdc00;
+      }
+    }
+  }
+}

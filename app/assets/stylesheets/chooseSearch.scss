@@ -1,0 +1,88 @@
+.search-content {
+  font-family: "筑紫A丸ゴシック";
+  width: 800px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+
+  .result-content {
+    font-weight: bold;
+
+    .result {
+      text-align: center;
+      margin: 15px 0 30px;
+
+      .result-name {
+        font-size: 36px;
+        color: #fff352;
+        display: inline-block;
+        text-shadow: 2px 0 0 black, 0 2px 0 black, -2px 0 0 black, 0 -2px 0 black,
+          1.4px 1.4px 0 black, -1.4px 1.4px 0 black, -1.4px -1.4px 0 black, 1.4px -1.4px 0 black;
+      }
+
+      .result-text {
+        font-size: 20px;
+        display: inline-block;
+      }
+    }
+
+    .under-result {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      .cooking-image {
+        display: flex;
+        justify-content: center;
+
+        .cooking-frame {
+          max-width: 450px;
+          max-height: 300px;
+          border: 2px solid #00000080;
+          border-radius: 10px;
+        }
+      }
+
+      .result-btns {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 60px;
+
+        #result-btn {
+          color: black;
+          font-size: 21px;
+          text-align: center;
+          border: 1.5px solid black;
+          border-radius: 30px;
+          margin-bottom: 20px;
+          padding: 3px 0;
+          width: 250px;
+        }
+        .decide-this{
+          background-color: #fff799;
+        }
+        .re-decide{
+          background-color: #a3d6cc;
+        }
+        .change-conditions{
+          background-color: #b2cbe4;
+        }
+        .new-path-btn{
+          background-color: #a1d8e2;
+        }
+        .back-path-btn{
+          background-color: #d1bada;
+        }
+      }
+    }
+  }
+
+  .no-there {
+    text-align: center;
+    font-size: 22px;
+    margin: 150px 0;
+  }
+}

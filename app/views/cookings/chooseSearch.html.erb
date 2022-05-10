@@ -1,0 +1,46 @@
+<%= render partial: "header" %>
+<div class='top-contents'>
+  <div class='search-content'>
+
+    <div class='result-content'>
+
+      <% if @result.length !=0 %>
+
+      <% @result.each do |r| %>
+      <div class='result'>
+        <p class='result-name'><%= r.cooking_name %></p>
+        <p class='result-text'>はいかがですか...？</p>
+      </div>
+
+      <div class='under-result'>
+        <div class='cooking-image'>
+          <% if r.image.attached? %>
+          <%= image_tag r.image, class: 'cooking-frame' %>
+          <% else %>
+          <%= image_tag 'no_image_yoko.jpeg', class: 'cooking-frame' %>
+          <% end %>
+        </div>
+        <div class='result-btns'>
+          <%= link_to 'これに決めた！', cooking_path(r.id), class: 'decide-this', id: 'result-btn' %>
+          <%= link_to '決めなおす', '', class: 're-decide', id: 'result-btn' %>
+          <%= link_to '条件を変える', chooseIndex_cookings_path, class: 'change-conditions', id: 'result-btn' %>
+        </div>
+      </div>
+
+
+      <% end %>
+
+      <% else %>
+      <div class='no-there'>該当する料理がありません</div>
+      <div class='under-result'>
+        <div class='result-btns'>
+          <%= link_to '料理を追加する', new_cooking_path, class: 'new-path-btn', id: 'result-btn' %>
+          <%= link_to '条件ページに戻る', chooseIndex_cookings_path, class: 'back-path-btn', id: 'result-btn' %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+<%= render partial: "footer" %>

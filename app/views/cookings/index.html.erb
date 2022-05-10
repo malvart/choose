@@ -1,0 +1,144 @@
+  <%= render partial: "header" %>
+  <div class='top-contents'>
+    <div class='main-content'>
+
+      <div class='heading'>
+        <div class='heading-text'>Chooseが、<br>あなたの晩ごはんを<br>選びます。</div>
+        <br>
+        <div class='rog-in-confirmation'>
+          <a href='#'>ログイン</a>
+          <a href='#'>サインアップ</a>
+        </div>
+      </div>
+
+<%
+=begin
+%>
+
+      <div class='main-text' , id='main-flame'>
+
+        <div class='new-cooking'>
+          <a href='cookings/new'>新しい料理を追加する</a>
+        </div>
+
+        <div class='cooking-lists'>
+          <div class='lists-heading'>
+            ―― お料理一覧 ――
+          </div>
+          <div class='name-lists'>
+
+            <ul class='staple-food-lists' , id='lists'>
+              <div class='list-heading'>
+                ― 主食 ―
+              </div>
+              <div class='scroll-lists'>
+                <% @cookings.each do |cooking| %>
+                <% if cooking.category_id == 2 %>
+                <li class='staple-food-list' , id='list'>
+                  <%= link_to cooking_path(cooking.id), method: :get, class: "show-link" do %>
+                  <%= cooking.cooking_name %>
+                  <% end %>
+                </li>
+                <% end %>
+                <% end %>
+              </div>
+            </ul>
+
+            <ul class='main-dish-lists' , id='lists'>
+              <div class='list-heading'>
+                ― 主菜 ―
+              </div>
+              <div class='scroll-lists'>
+                <% @cookings.each do |cooking| %>
+                <% if cooking.category_id == 3 %>
+                <li class='main-dish-list' , id='list'>
+                  <%= link_to cooking_path(cooking.id), method: :get, class: "show-link" do %>
+                  <%= cooking.cooking_name %>
+                  <% end %>
+                </li>
+                <% end %>
+                <% end %>
+              </div>
+            </ul>
+
+            <ul class='side-dish-lists' , id='lists'>
+              <div class='list-heading'>
+                ― 副菜 ―
+              </div>
+              <div class='scroll-lists'>
+                <% @cookings.each do |cooking| %>
+                <% if cooking.category_id == 4 %>
+                <li class='side-dish-list' , id='list'>
+                  <%= link_to cooking_path(cooking.id), method: :get, class: "show-link" do %>
+                  <%= cooking.cooking_name %>
+                  <% end %>
+                </li>
+                <% end %>
+                <% end %>
+              </div>
+            </ul>
+
+            <ul class='etc-lists' , id='lists'>
+              <div class='list-heading'>
+                ― その他 ―
+              </div>
+              <div class='scroll-lists'>
+                <% @cookings.each do |cooking| %>
+                <% if cooking.category_id == 5 %>
+                <li class='etc-list' , id='list'>
+                  <%= link_to cooking_path(cooking.id), method: :get, class: "show-link" do %>
+                  <%= cooking.cooking_name %>
+                  <% end %>
+                </li>
+                <% end %>
+                <% end %>
+              </div>
+            </ul>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class='side-bar'>
+
+      <div class='recommend' , id='main-flame'>
+        <div class='recommend-header'>今日のおすすめ</div>
+        <div class='recommend-content'>
+
+
+          <% @random4.each do |random| %>
+          <div class='slide-recommend'>
+            <%= link_to cooking_path(random.id), method: :get do %>
+            <% if random.image.attached? %>
+            <%= image_tag random.image, id: 'slide-image' %>
+            <% else %>
+            <%= image_tag 'no_image_yoko.jpeg', id: 'slide-image' %>
+            <% end %>
+            <div class='slide-name'>
+              <%= random.cooking_name %>
+            </div>
+            <% end %>
+          </div>
+          <% end %>
+
+
+        </div>
+      </div>
+
+    </div>
+
+<%
+=end
+%>
+
+  </div>
+
+  <div class='beneath-contents'>
+  </div>
+
+  <%= render partial: "footer" %>
