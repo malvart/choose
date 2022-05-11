@@ -12,7 +12,7 @@ class CookingsController < ApplicationController
 
   def create
     @cooking_form = CookingForm.new(cooking_form_params)
-    if @cooking_form.valid? 
+    if @cooking_form.valid?
       @cooking_form.save
       redirect_to root_path
     else
