@@ -1,16 +1,19 @@
 class CookingsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
+
   def index
     @cookings = Cooking.all.order('cooking_name ASC')
     @random4 = Cooking.order('RAND()').limit(4)
   end
 
   def new
-    @cooking = Cooking.new
+    @cooking_form = CookingForm.new
   end
 
   def create
-    @cooking = Cooking.new(cooking_params)
-    if @cooking.save
+    @cooking_form = CookingForm.new(cooking_form_params)
+    if @cooking_form.valid? 
+      @cooking_form.save
       redirect_to root_path
     else
       render 'new'
@@ -61,8 +64,7 @@ class CookingsController < ApplicationController
 
   private
 
-  def cooking_params
-    params.require(:cooking).permit(:cooking_name, :category_id, :staple_food_id,
-                                    :main_dish_id, :side_dish_id, :image)
+  def cooking_form_params
+    params.require(:cooking_form).permit(:cooking_name, :image).merge(user_id: current_user.id)
   end
 end

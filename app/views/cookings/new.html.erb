@@ -2,7 +2,7 @@
 <div class='top-contents'>
   <div class='new-cooking-content'>
     <div class='form-title'>新しいお料理に関する詳細</div>
-    <%= form_with model: @cooking, url: cookings_path, id: 'new_cooking', local: true do |f| %>
+    <%= form_with model: @cooking_form, url: cookings_path, id: 'new_cooking', local: true do |f| %>
 
     <% if f.object.errors.any? %>
     <div class="error-alert">
@@ -24,34 +24,34 @@
         <div class='form-heading'>
           カテゴリー
         </div>
-        <%= f.collection_select :category_id, Category.all, :id, :name, {}, {class:"select-box", id:'category'} %>
+        <%= f.collection_select :category_id, Category.find(1,2,3), :id, :category_name, {include_blank: "---"}, {class:"select-box", id:'category'} %>
+      </div>
+    </div>
+
+    <div class='form' , id='form-cat1'>
+      <div class='cat' , id='cat1'>
+        <div class='form-heading'>
+          主食
+        </div>
+        <%= f.collection_select :staple_food_id, Category.find(7,8,9), :id, :category_name, {include_blank: "---"}, {class:"select-box"} %>
       </div>
     </div>
 
     <div class='form' , id='form-cat2'>
       <div class='cat' , id='cat2'>
         <div class='form-heading'>
-          主食
+          主菜
         </div>
-        <%= f.collection_select :staple_food_id, StapleFood.all, :id, :name, {}, {class:"select-box"} %>
+        <%= f.collection_select :main_dish_id, Category.find(4,5,6), :id, :category_name, {include_blank: "---"}, {class:"select-box"} %>
       </div>
     </div>
 
     <div class='form' , id='form-cat3'>
       <div class='cat' , id='cat3'>
         <div class='form-heading'>
-          主菜
-        </div>
-        <%= f.collection_select :main_dish_id, MainDish.all, :id, :name, {}, {class:"select-box"} %>
-      </div>
-    </div>
-
-    <div class='form' , id='form-cat4'>
-      <div class='cat' , id='cat4'>
-        <div class='form-heading'>
           副菜
         </div>
-        <%= f.collection_select :side_dish_id, SideDish.all, :id, :name, {}, {class:"select-box"} %>
+        <%= f.collection_select :side_dish_id, Category.find(10,11,12), :id, :category_name, {include_blank: "---"}, {class:"select-box"} %>
       </div>
     </div>
 
@@ -70,7 +70,7 @@
       <%= f.submit "入力OK!", class:'ok-btn' %>
     </div>
 
-    <div class='annotation'>※画像は後でも追加できます</div>
+    <div class='annotation'>※カテゴリー・画像は後でも追加できます</div>
 
     <% end %>
   </div>
