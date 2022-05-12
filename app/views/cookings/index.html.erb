@@ -17,10 +17,6 @@
         </div>
       </div>
 
-      <%
-=begin
-%>
-
       <div class='main-text' , id='main-flame'>
 
         <div class='new-cooking'>
@@ -39,7 +35,7 @@
               </div>
               <div class='scroll-lists'>
                 <% @cookings.each do |cooking| %>
-                <% if cooking.category_id == 2 %>
+                <% if cooking.cooking_categories.pluck(:category_id).include?(3) %>
                 <li class='staple-food-list' , id='list'>
                   <%= link_to cooking_path(cooking.id), method: :get, class: "show-link" do %>
                   <%= cooking.cooking_name %>
@@ -56,8 +52,8 @@
               </div>
               <div class='scroll-lists'>
                 <% @cookings.each do |cooking| %>
-                <% if cooking.category_id == 3 %>
-                <li class='main-dish-list' , id='list'>
+                <% if cooking.cooking_categories.pluck(:category_id).include?(2) %>
+                <li class='staple-food-list' , id='list'>
                   <%= link_to cooking_path(cooking.id), method: :get, class: "show-link" do %>
                   <%= cooking.cooking_name %>
                   <% end %>
@@ -73,7 +69,7 @@
               </div>
               <div class='scroll-lists'>
                 <% @cookings.each do |cooking| %>
-                <% if cooking.category_id == 4 %>
+                <% if cooking.cooking_categories.pluck(:category_id).include?(3) %>
                 <li class='side-dish-list' , id='list'>
                   <%= link_to cooking_path(cooking.id), method: :get, class: "show-link" do %>
                   <%= cooking.cooking_name %>
@@ -90,7 +86,7 @@
               </div>
               <div class='scroll-lists'>
                 <% @cookings.each do |cooking| %>
-                <% if cooking.category_id == 5 %>
+                <% unless [1, 2, 3].each {|i| cooking.cooking_categories.pluck(:category_id).include?(i)} %>
                 <li class='etc-list' , id='list'>
                   <%= link_to cooking_path(cooking.id), method: :get, class: "show-link" do %>
                   <%= cooking.cooking_name %>
@@ -136,9 +132,6 @@
         </div>
       </div>
 
-      <%
-=end
-%>
 
     </div>
 
