@@ -12,15 +12,15 @@ $(window).on('load',() => {
 
   function categoryCheck() {
     let catVal = $('#category').val();
-    if (catVal == 1) {
+    if (catVal == "主食") {
       $('#form-cat1').after(cat1);
       cat2.remove();
       cat3.remove();
-    } else if (catVal == 2) {
+    } else if (catVal == "主菜") {
       $('#form-cat2').after(cat2);
       cat1.remove();
       cat3.remove();
-    } else if (catVal == 3) {
+    } else if (catVal == "副菜") {
       $('#form-cat3').after(cat3);
       cat1.remove();
       cat2.remove();

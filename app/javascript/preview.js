@@ -1,7 +1,7 @@
 $(() => {
   const previewList = document.getElementById('previews');
 
-  const fileField = document.querySelector('input[type="file"][name="cooking[image]"]');
+  const fileField = document.querySelector('input[type="file"][name="cooking_form[image]"]');
   $(fileField).on('change', function (e) {
     const alreadyPreview = document.querySelector('.preview');
     if (alreadyPreview) {

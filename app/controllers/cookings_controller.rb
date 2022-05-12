@@ -1,5 +1,6 @@
 class CookingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
+  before_action :varify_user, only: [:edit, :destroy]
 
   def index
     @cookings = Cooking.all.order('cooking_name ASC')
@@ -65,6 +66,10 @@ class CookingsController < ApplicationController
   private
 
   def cooking_form_params
-    params.require(:cooking_form).permit(:cooking_name, :image).merge(user_id: current_user.id)
+    params.require(:cooking_form).permit(:cooking_name, :image, category_name: []).merge(user_id: current_user.id)
+  end
+
+  def varify_user
+    redirect_to root_path unless current_user == @cooking.user
   end
 end

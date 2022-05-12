@@ -11,8 +11,10 @@ class CookingForm
 
   def save
     cooking = Cooking.create(cooking_name: cooking_name, user_id: user_id, image: image)
-    category = Category.where(category_name: category_name).first_or_initialize
-    category.save
-    CookingCategory.create(cooking_id: cooking.id, category_id: category.id)
+    category_name.each do |cat_name|
+      category = Category.where(category_name: cat_name).first_or_initialize
+      category.save
+      CookingCategory.create(cooking_id: cooking.id, category_id: category.id)
+    end
   end
 end
