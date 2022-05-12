@@ -37,9 +37,7 @@ class CookingsController < ApplicationController
 
   def update
     @cooking_form = CookingForm.new(cooking_form_params)
-    if @cooking_form.image.present?
-      @cooking_form.image ||= @cooking.image.blob
-    end
+    @cooking_form.image ||= @cooking.image.blob if @cooking_form.image.present?
 
     if @cooking_form.valid?
       @cooking_form.update(cooking_form_params, @cooking)
