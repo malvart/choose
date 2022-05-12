@@ -2,20 +2,14 @@
 <div class='top-contents'>
   <div class='new-cooking-content'>
     <div class='form-title'>お料理に関する詳細編集</div>
-    <%= form_with model: @cooking, url: cooking_path(@cooking.id), id: 'new_cooking', local: true do |f| %>
-
-    <% if f.object.errors.any? %>
-    <div class="error-alert">
-      入力に不備があります！
-    </div>
-    <% end %>
+    <%= form_with model: @cooking_form, url: cooking_path(@cooking.id), id: 'new_cooking', local: true, method: :patch do |f| %>
 
     <div class='form'>
       <div class='cooking-name'>
         <div class='form-heading'>
           お料理名
         </div>
-        <%= f.text_field :cooking_name, class:'cooking-text', placeholder:'例: ハンバーグ' %>
+        <%= f.text_field :cooking_name, class:'cooking-text', placeholder:'例: ハンバーグ', required: false, value: @cooking.cooking_name, name:'cooking_form[cooking_name]' %>
       </div>
     </div>
 
@@ -24,34 +18,34 @@
         <div class='form-heading'>
           カテゴリー
         </div>
-        <%= f.collection_select :category_id, Category.all, :id, :name, {}, {class:"select-box", id:'category'} %>
+        <%= f.collection_select :category_name, Category.where("(category_name = '主食') OR (category_name = '主菜') OR (category_name = '副菜')"), :category_name, :category_name, {include_blank: "---"}, {class:"select-box", id:'category', name:"cooking_form[category_name][]"} %>
+      </div>
+    </div>
+
+    <div class='form' , id='form-cat1'>
+      <div class='cat' , id='cat1'>
+        <div class='form-heading'>
+          主食
+        </div>
+        <%= f.collection_select :category_name, Category.where("(category_name = 'ごはんもの') OR (category_name = 'めん類') OR (category_name = 'パン類')"), :category_name, :category_name, {include_blank: "---"}, {class:"select-box", name:"cooking_form[category_name][]"} %>
       </div>
     </div>
 
     <div class='form' , id='form-cat2'>
       <div class='cat' , id='cat2'>
         <div class='form-heading'>
-          主食
+          主菜
         </div>
-        <%= f.collection_select :staple_food_id, StapleFood.all, :id, :name, {}, {class:"select-box"} %>
+        <%= f.collection_select :category_name, Category.where("(category_name = '和食') OR (category_name = '洋食') OR (category_name = '中華')"), :category_name, :category_name, {include_blank: "---"}, {class:"select-box", name:"cooking_form[category_name][]"} %>
       </div>
     </div>
 
     <div class='form' , id='form-cat3'>
       <div class='cat' , id='cat3'>
         <div class='form-heading'>
-          主菜
-        </div>
-        <%= f.collection_select :main_dish_id, MainDish.all, :id, :name, {}, {class:"select-box"} %>
-      </div>
-    </div>
-
-    <div class='form' , id='form-cat4'>
-      <div class='cat' , id='cat4'>
-        <div class='form-heading'>
           副菜
         </div>
-        <%= f.collection_select :side_dish_id, SideDish.all, :id, :name, {}, {class:"select-box"} %>
+        <%= f.collection_select :category_name, Category.where("(category_name = 'サラダ・和え物') OR (category_name = 'つけもの・おひたし') OR (category_name = 'みそ汁・スープ')"), :category_name, :category_name, {include_blank: "---"}, {class:"select-box", name:"cooking_form[category_name][]"} %>
       </div>
     </div>
 
@@ -61,8 +55,8 @@
           お写真
         </div>
         <div class='previews', id='previews'></div>
-        <%= f.label :image, '画像を選択', class: 'img-file-btn' %>
-        <%= f.file_field :image, class:'img-file' %>
+        <%= f.label :image, '画像を選択', class:'img-file-btn', for:'cooking_form_image' %>
+        <%= f.file_field :image, class:'img-file', name:'cooking_form[image]', id:'cooking_form_image' %>
       </div>
     </div>
 

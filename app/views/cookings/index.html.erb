@@ -35,7 +35,7 @@
               </div>
               <div class='scroll-lists'>
                 <% @cookings.each do |cooking| %>
-                <% if cooking.cooking_categories.pluck(:category_id).include?(3) %>
+                <% if cooking.cooking_categories.pluck(:category_id).include?(1) %>
                 <li class='staple-food-list' , id='list'>
                   <%= link_to cooking_path(cooking.id), method: :get, class: "show-link" do %>
                   <%= cooking.cooking_name %>
@@ -86,7 +86,7 @@
               </div>
               <div class='scroll-lists'>
                 <% @cookings.each do |cooking| %>
-                <% unless [1, 2, 3].each {|i| cooking.cooking_categories.pluck(:category_id).include?(i)} %>
+                <% unless cooking.cooking_categories.pluck(:category_id).include?(1) || cooking.cooking_categories.pluck(:category_id).include?(2) || cooking.cooking_categories.pluck(:category_id).include?(3) %>
                 <li class='etc-list' , id='list'>
                   <%= link_to cooking_path(cooking.id), method: :get, class: "show-link" do %>
                   <%= cooking.cooking_name %>
