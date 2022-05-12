@@ -1,5 +1,6 @@
 class CookingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
+  before_action :find_cooking, only: [:show, :destroy, :edit, :update]
   before_action :varify_user, only: [:edit, :destroy]
 
   def index
@@ -22,22 +23,26 @@ class CookingsController < ApplicationController
   end
 
   def show
-    @cooking = Cooking.find(params[:id])
   end
 
   def destroy
-    @cooking = Cooking.find(params[:id])
     @cooking.destroy
     redirect_to root_path
   end
 
   def edit
-    @cooking = Cooking.find(params[:id])
+    cooking_attributes = @cooking.attributes
+    @cookig_form = CookingForm.new(cooking_attributes)
   end
 
   def update
-    @cooking = Cooking.find(params[:id])
-    if @cooking.update(cooking_params)
+    @cooking_form = CookingForm.new(cooking_form_params)
+    if @cooking_form.image.present?
+      @cooking_form.image ||= @cooking.image.blob
+    end
+
+    if @cooking_form.valid?
+      @cooking_form.update(cooking_form_params, @cooking)
       redirect_to cooking_path(@cooking.id)
     else
       render :edit
@@ -69,7 +74,11 @@ class CookingsController < ApplicationController
     params.require(:cooking_form).permit(:cooking_name, :image, category_name: []).merge(user_id: current_user.id)
   end
 
+  def find_cooking
+    @cooking = Cooking.find(params[:id])
+  end
+
   def varify_user
-    redirect_to root_path unless current_user == @cooking.user
+    redirect_to root_path unless current_user.id == @cooking.user_id
   end
 end
