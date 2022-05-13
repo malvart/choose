@@ -11,15 +11,15 @@ $(function (){
 
   function categoryCheck(){
     let catVal = $('#q_category_id_eq').val();
-    if (catVal == 2){
+    if (catVal == 1){
       $('#form-cat2').after(cat2);
       cat3.remove();
       cat4.remove();
-    } else if (catVal == 3){
+    } else if (catVal == 2){
       $('#form-cat3').after(cat3);
       cat2.remove();
       cat4.remove();
-    } else if (catVal == 4){
+    } else if (catVal == 3){
       $('#form-cat4').after(cat4);
       cat2.remove();
       cat3.remove();

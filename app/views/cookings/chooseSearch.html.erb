@@ -4,9 +4,9 @@
 
     <div class='result-content'>
 
-      <% if @result.length !=0 %>
+      <% if @result2&.length != nil %>
 
-      <% @result.each do |r| %>
+      <% @result2.each do |r| %>
       <div class='result'>
         <p class='result-name'><%= r.cooking_name %></p>
         <p class='result-text'>はいかがですか...？</p>
