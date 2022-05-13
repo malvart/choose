@@ -54,7 +54,6 @@ class CookingsController < ApplicationController
   end
 
   def chooseIndex
-    #binding.pry
     keyword = params[:q]
     @q1 = CookingCategory.order('RAND()').limit(1).ransack(keyword)
     @result1 = @q1.result
