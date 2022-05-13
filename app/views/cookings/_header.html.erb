@@ -6,7 +6,7 @@
       <div class='header-right'>
 
         <% if user_signed_in? %>
-        <%= link_to "お料理を決める", '#', class: 'choose-cooking' %>
+        <%= link_to "お料理を決める", chooseIndex_cookings_path, class: 'choose-cooking' %>
         <% else %>
         <div class='authentication'>
           <%= link_to "ログイン", new_user_session_path, class: 'rog-in' %>

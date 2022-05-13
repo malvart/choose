@@ -54,16 +54,28 @@ class CookingsController < ApplicationController
   end
 
   def chooseIndex
-    @q = Cooking.order('RAND()').limit(1).ransack(params[:q])
+    #binding.pry
+    keyword = params[:q]
+    @q1 = CookingCategory.order('RAND()').limit(1).ransack(keyword)
+    @result1 = @q1.result
+    @result1.each do |r|
+      @q2 = Cooking.order('RAND()').limit(1).ransack(id_eq: r.cooking_id)
+    end
+    @cat_range1 = Range.new(1, 3)
+    @cat_range2 = Range.new(4, 6)
+    @cat_range3 = Range.new(7, 9)
+    @cat_range4 = Range.new(10, 12)
   end
 
   def chooseSearch
-    @q = Cooking.order('RAND()').limit(1).ransack(params[:q])
-    @result = @q.result
+    keyword = params[:q]
+    @q1 = CookingCategory.order('RAND()').limit(1).ransack(keyword)
+    @result1 = @q1&.result
+    @result1.each do |r|
+      @q2 = Cooking.order('RAND()').limit(1).ransack(id_eq: r.cooking_id)
+    end
+    @result2 = @q2&.result
     category_id = params[:q]
-    staple_food_id = params[:q]
-    main_dish_id = params[:q]
-    side_dish_id = params[:q]
   end
 
   private

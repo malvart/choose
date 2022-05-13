@@ -2,5 +2,5 @@ class Category < ApplicationRecord
   has_many :cooking_categories
   has_many :cookings, through: :cooking_categories
 
-  validates :category_name, uniqueness: true
+  validates :category_name, uniqueness: true, presence: true
 end
