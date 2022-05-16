@@ -32,7 +32,18 @@ class CookingsController < ApplicationController
 
   def edit
     cooking_attributes = @cooking.attributes
-    @cookig_form = CookingForm.new(cooking_attributes)
+    @cooking_form = CookingForm.new(cooking_attributes)
+    category = CookingCategory.where(cooking_id: @cooking.id)
+    cat_id1 = category[0]
+    cat_id2 = category[1]
+    cat_id3 = category[2]
+    cat_id4 = category[3]
+    cat_id5 = category[4]
+    @cat1 = Category.where(id: cat_id1&.category_id)
+    @cat2 = Category.where(id: cat_id2&.category_id)
+    @cat3 = Category.where(id: cat_id3&.category_id)
+    @cat4 = Category.where(id: cat_id4&.category_id)
+    @cat5 = Category.where(id: cat_id5&.category_id)
   end
 
   def update
@@ -64,6 +75,7 @@ class CookingsController < ApplicationController
     @cat_range2 = Range.new(4, 6)
     @cat_range3 = Range.new(7, 9)
     @cat_range4 = Range.new(10, 12)
+    @cat_range5 = Range.new(1, 12)
   end
 
   def chooseSearch
@@ -75,6 +87,12 @@ class CookingsController < ApplicationController
     end
     @result2 = @q2&.result
     category_id = params[:q]
+  end
+
+  def search
+    return nil if params[:keyword] == ""
+    category = Category.where(['category_name LIKE ?', "%#{params[:keyword]}%"] )
+    render json:{ keyword: category }
   end
 
   private

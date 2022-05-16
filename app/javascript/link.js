@@ -1,4 +1,7 @@
 $(function (){
+  const newContent = document.getElementsByClassName('show-link');
+  if (!newContent) return null;
+
   $(".show-link").on('mouseover', function(){
     $(this).css('color', '#9079b6')
   });

@@ -55,6 +55,26 @@
       </div>
     </div>
 
+    <div class='form', id='standard'>
+      <div class='new-category'>
+        <div class='form-heading'>
+          新しいカテゴリーを作る
+        </div>
+        <%= f.text_field :category_name, class:'cooking-text', placeholder:'例: お肉料理', name:'cooking_form[category_name][]',id:'new-cat' %>
+        <div class='add-form-btn', id='add-form-btn'>▼+</div>
+        <div id="search-result"></div>
+      </div>
+    </div>
+
+    <div class='form', id='add-form'>
+      <div class='new-category'>
+        <%= f.text_field :category_name, class:'cooking-text', placeholder:'例: お肉料理', name:'cooking_form[category_name][]',id:'new-cat' %>
+      </div>
+      <div class='new-category'>
+        <%= f.text_field :category_name, class:'cooking-text', placeholder:'例: お肉料理', name:'cooking_form[category_name][]',id:'new-cat' %>
+      </div>
+    </div>
+
     <div class='form'>
       <div class='img-upload'>
         <div class='form-heading'>

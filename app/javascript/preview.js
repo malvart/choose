@@ -1,4 +1,7 @@
 $(() => {
+  const newContent = document.getElementsByClassName('new-cooking-content');
+  if (!newContent) return null;
+  
   const previewList = document.getElementById('previews');
 
   const fileField = document.querySelector('input[type="file"][name="cooking_form[image]"]');

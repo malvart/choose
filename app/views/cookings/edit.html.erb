@@ -14,38 +14,24 @@
     </div>
 
     <div class='form'>
-      <div class='cat'>
+      <div class='new-category'>
         <div class='form-heading'>
           カテゴリー
         </div>
-        <%= f.collection_select :category_name, Category.where("(category_name = '主食') OR (category_name = '主菜') OR (category_name = '副菜')"), :category_name, :category_name, {include_blank: "---"}, {class:"select-box", id:'category', name:"cooking_form[category_name][]"} %>
+        <%= f.text_field :category_name, class:'cooking-text', placeholder:'例: お肉料理', value: @cat1[0]&.category_name , name:'cooking_form[category_name][]', id:'new-cat' %>
+        <div id="search-result"></div>
       </div>
-    </div>
-
-    <div class='form' , id='form-cat1'>
-      <div class='cat' , id='cat1'>
-        <div class='form-heading'>
-          主食
-        </div>
-        <%= f.collection_select :category_name, Category.where("(category_name = 'ごはんもの') OR (category_name = 'めん類') OR (category_name = 'パン類')"), :category_name, :category_name, {include_blank: "---"}, {class:"select-box", name:"cooking_form[category_name][]"} %>
+      <div class='new-category'>
+        <%= f.text_field :category_name, class:'cooking-text', placeholder:'例: お肉料理', value: @cat2[0]&.category_name , name:'cooking_form[category_name][]', id:'new-cat' %>
       </div>
-    </div>
-
-    <div class='form' , id='form-cat2'>
-      <div class='cat' , id='cat2'>
-        <div class='form-heading'>
-          主菜
-        </div>
-        <%= f.collection_select :category_name, Category.where("(category_name = '和食') OR (category_name = '洋食') OR (category_name = '中華')"), :category_name, :category_name, {include_blank: "---"}, {class:"select-box", name:"cooking_form[category_name][]"} %>
+      <div class='new-category'>
+        <%= f.text_field :category_name, class:'cooking-text', placeholder:'例: お肉料理', value: @cat3[0]&.category_name , name:'cooking_form[category_name][]', id:'new-cat' %>
       </div>
-    </div>
-
-    <div class='form' , id='form-cat3'>
-      <div class='cat' , id='cat3'>
-        <div class='form-heading'>
-          副菜
-        </div>
-        <%= f.collection_select :category_name, Category.where("(category_name = 'サラダ・和え物') OR (category_name = 'つけもの・おひたし') OR (category_name = 'みそ汁・スープ')"), :category_name, :category_name, {include_blank: "---"}, {class:"select-box", name:"cooking_form[category_name][]"} %>
+      <div class='new-category'>
+        <%= f.text_field :category_name, class:'cooking-text', placeholder:'例: お肉料理', value: @cat4[0]&.category_name , name:'cooking_form[category_name][]', id:'new-cat' %>
+      </div>
+      <div class='new-category'>
+        <%= f.text_field :category_name, class:'cooking-text', placeholder:'例: お肉料理', value: @cat5[0]&.category_name , name:'cooking_form[category_name][]', id:'new-cat' %>
       </div>
     </div>
 

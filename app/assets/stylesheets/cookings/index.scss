@@ -101,7 +101,8 @@ a {
         padding: 10px 20px;
 
         .scroll-lists {
-          max-height: 150px;
+          min-height: 80px;
+          max-height: 160px;
           overflow-y: scroll;
           border-left: 1.5px dashed #00000080;
           border-right: 1.5px dashed #00000080;
@@ -122,6 +123,7 @@ a {
     .recommend {
       background-color: #ffedab; //サンシャインイエロー
       width: 250px;
+      margin-bottom: 20px;
 
       .recommend-header {
         font-size: 18px;
@@ -186,6 +188,14 @@ a {
           border-radius: 10px;
         }
       }
+    }
+
+    .category-search{
+      background-color: #a3d6cc;
+      font-size: 16px;
+      font-family: '筑紫A丸ゴシック';
+      font-weight: bold;
+      text-align: center;
     }
   }
 }
