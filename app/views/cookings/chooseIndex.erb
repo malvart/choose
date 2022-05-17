@@ -40,6 +40,9 @@
       </div>
     </div>
 
+<%
+=begin%>
+
     <div class='form'>
       <div class='cat'>
         <div class='form-heading'>
@@ -66,6 +69,9 @@
         <%= f.collection_select :category_id_eq, Category.where.not(id: @cat_range5), :id, :category_name, include_blank: "---" %>
       </div>
     </div>
+
+<%
+=end%>
 
     <div class='form-btn-content'>
       <%= f.submit 'Choose!', class:'ok-btn' %>

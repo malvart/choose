@@ -5,7 +5,7 @@ $(window).on('load',() => {
     $(inputElement).on("input", () => {
       const keyword = $('#new-cat').val();
       const XHR = new XMLHttpRequest();
-      XHR.open("GET", `/cookings/search/?keyword=${keyword}`, true);
+      XHR.open("GET", `/cookings/incrementalSearch/?keyword=${keyword}`, true);
       XHR.responseType = "json";
       XHR.send();
       XHR.onload = () => {
