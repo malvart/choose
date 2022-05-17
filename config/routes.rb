@@ -12,4 +12,5 @@ Rails.application.routes.draw do
       get 'imageDestroy'
     end
   end
+  resources :users, only: :show
 end
