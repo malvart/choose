@@ -104,6 +104,8 @@ a {
           min-height: 80px;
           max-height: 160px;
           overflow-y: scroll;
+          overflow-x: hidden;
+          text-overflow: ellipsis;
           border-left: 1.5px dashed #00000080;
           border-right: 1.5px dashed #00000080;
         }
