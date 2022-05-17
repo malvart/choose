@@ -1,0 +1,18 @@
+<%= render partial: "header" %>
+
+<div class='search-result'>
+  <div class='result-heading'>検 索 結 果</div>
+
+  <div class='category-name-box'>
+    <% @result.each do |r| %>
+    <div class='category-name'>
+      <%= link_to "#", method: :get, class: "show-link" do %>
+      <%= r.category_name %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+
+</div>
+
+<%= render partial: "footer" %>

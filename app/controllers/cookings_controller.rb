@@ -6,6 +6,9 @@ class CookingsController < ApplicationController
   def index
     @cookings = Cooking.all.order('cooking_name ASC')
     @random4 = Cooking.order('RAND()').limit(4)
+
+    keyword = params[:q]
+    @q = Category.ransack(keyword)
   end
 
   def new
@@ -67,7 +70,7 @@ class CookingsController < ApplicationController
   def chooseIndex
     keyword = params[:q]
     @q1 = CookingCategory.order('RAND()').limit(1).ransack(keyword)
-    @result1 = @q1.result
+    @result1 = @q1&.result
     @result1.each do |r|
       @q2 = Cooking.order('RAND()').limit(1).ransack(id_eq: r.cooking_id)
     end
@@ -89,10 +92,16 @@ class CookingsController < ApplicationController
     category_id = params[:q]
   end
 
-  def search
+  def incrementalSearch
     return nil if params[:keyword] == ""
     category = Category.where(['category_name LIKE ?', "%#{params[:keyword]}%"] )
     render json:{ keyword: category }
+  end
+
+  def search
+    keyword = params[:q]
+    @q = Category.ransack(keyword)
+    @result = @q&.result
   end
 
   private
