@@ -134,8 +134,17 @@
 
       <div class='category-search' , id='main-flame'>
         <div class='search-heading'>カテゴリー検索</div>
-        <%= search_form_for @q, url: categorySearch_cookings_path, local: true do |f| %>
+        <%= search_form_for @q1, url: categorySearch_cookings_path, local: true do |f| %>
         <%= f.text_field :category_name_cont, class:'search-text', placeholder:'検索ワードを入力', id:'new-cat' %>
+        <div id="search-result"></div>
+        <%= f.submit '検索', class:'ok-btn' %>
+        <% end %>
+      </div>
+
+      <div class='cooking-search' , id='main-flame'>
+        <div class='search-heading'>料理名で検索</div>
+        <%= search_form_for @q2, url: cookingSearch_cookings_path, local: true do |f| %>
+        <%= f.text_field :cooking_name_cont, class:'search-text', placeholder:'検索ワードを入力', id:'new-cat' %>
         <div id="search-result"></div>
         <%= f.submit '検索', class:'ok-btn' %>
         <% end %>

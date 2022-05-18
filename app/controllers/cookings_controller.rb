@@ -1,14 +1,15 @@
 class CookingsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
-  before_action :find_cooking, only: [:show, :destroy, :edit, :update]
-  before_action :varify_user, only: [:edit, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy, :imageDestroy]
+  before_action :find_cooking, only: [:show, :destroy, :edit, :update, :imageDestroy]
+  before_action :varify_user, only: [:edit, :destroy, :imageDestroy]
 
   def index
     @cookings = Cooking.all.order('cooking_name ASC')
     @random4 = Cooking.order('RAND()').limit(4)
 
     keyword = params[:q]
-    @q = Category.ransack(keyword)
+    @q1 = Category.ransack(keyword)
+    @q2 = Cooking.ransack(keyword)
   end
 
   def new
@@ -62,7 +63,6 @@ class CookingsController < ApplicationController
   end
 
   def imageDestroy
-    @cooking = Cooking.find(params[:id])
     @cooking.image.purge
     redirect_to cooking_path(@cooking.id)
   end
@@ -101,6 +101,12 @@ class CookingsController < ApplicationController
   def categorySearch
     keyword = params[:q]
     @q = Category.ransack(keyword)
+    @result = @q&.result
+  end
+
+  def cookingSearch
+    keyword = params[:q]
+    @q = Cooking.ransack(keyword)
     @result = @q&.result
   end
 

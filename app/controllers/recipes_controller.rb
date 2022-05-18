@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+  before_action :varify_user, only: :new
 
 def new
   @cooking = Cooking.find(params[:cooking_id])
@@ -20,6 +22,10 @@ private
 
 def recipe_params
   params.require(:recipe).permit(:ingredient, :process, :duration, :plate).merge(cooking_id: @cooking.id)
+end
+
+def varify_user
+  redirect_to root_path unless current_user.id == @cooking.user_id
 end
 
 end

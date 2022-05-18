@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'chooseSearch'
       get 'incrementalSearch'
       get 'categorySearch'
+      get 'cookingSearch'
     end
     member do
       get 'imageDestroy'
