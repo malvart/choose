@@ -43,7 +43,11 @@
     <% if current_user.id == @cooking.user_id %>
     <div class='show-cooking-btns'>
       <%= link_to "料理情報を編集する", edit_cooking_path, method: :get, class: 'edit-btn' %>
-      <%= link_to "レシピを編集する", new_cooking_recipes_path(@cooking.id), class: 'recipe-edit-btn' %>
+      <% if @cooking.recipe.present? %>
+      <%= link_to "レシピを編集する", edit_cooking_recipes_path(@cooking.id), class: 'recipe-edit-btn' %>
+      <% else %>
+      <%= link_to "新しくレシピを書く", new_cooking_recipes_path(@cooking.id), class: 'recipe-edit-btn' %>
+      <% end %>
       <%= link_to "! この料理を削除する !", cooking_path, method: :delete, class: 'delete-btn' %>
     </div>
     <% end %>

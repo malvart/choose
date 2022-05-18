@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'cookings#index'
   resources :users, only: :show
   resources :cookings do
-    resource :recipes, only: [:new, :create, :edit]
+    resource :recipes, only: [:new, :create, :edit, :update]
     collection do
       get 'chooseIndex'
       get 'chooseSearch'

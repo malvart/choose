@@ -4,7 +4,7 @@
   <div class='new-recipe-content'>
     <div class='form-title'><%= @cooking.cooking_name %>のレシピ</div>
     <%= form_with model: @recipe, url: cooking_recipes_path, id: 'new_cooking', local: true do |f| %>
-    
+
     <% if f.object.errors.any? %>
     <div class="error-alert">
       入力に不備があります！
@@ -16,7 +16,7 @@
         <div class='form-heading'>
           お料理工程
         </div>
-        <%= f.text_area :process, class:'cooking-text', value:"❶\n❷\n❸\n❹\n❺\n❻\n❼\n❽\n❾" %>
+        <%= f.text_area :process, class:'cooking-text'%>
       </div>
     </div>
 
@@ -30,7 +30,7 @@
             　　<%= f.number_field :plate, {class:"select-box", id:'category'} %>人分
           </div>
         </div>
-        <%= f.text_area :ingredient, class:'cooking-text', value:"❶醤油　大さじ1\n❷長ねぎ　1本\n❸\n❹\n❺" %>
+        <%= f.text_area :ingredient, class:'cooking-text' %>
       </div>
     </div>
 

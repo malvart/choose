@@ -106,7 +106,7 @@ class CookingsController < ApplicationController
 
   def cookingSearch
     keyword = params[:q]
-    @q = Cooking.ransack(keyword)
+    @q = Cooking.order('cooking_name ASC').ransack(keyword)
     @result = @q&.result
   end
 

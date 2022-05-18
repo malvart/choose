@@ -4,6 +4,13 @@
   border-left: 2px solid black;
   border-right: 2px solid black;
 
+  .error-alert {
+    text-align: center;
+    font-size: 20px;
+    color: #e8383d;
+    font-weight: bold;
+  }
+
   .form {
     margin: 30px;
 
