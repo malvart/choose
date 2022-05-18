@@ -197,6 +197,57 @@ a {
       font-size: 16px;
       font-family: '筑紫A丸ゴシック';
       text-align: center;
+      margin-bottom: 20px;
+
+      .search-heading {
+        font-weight: bold;
+      }
+
+      .search-text {
+        width: 100%;
+        font-size: 14px;
+        padding: 0 7px;
+        margin-top: 5px;
+        border: 1px solid black;
+        border-radius: 5px;
+      }
+
+      #search-result {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .child {
+        width: 100%;
+        text-align: center;
+        margin-top: 5px;
+        border: 1px solid #dedede;
+        border-radius: 5px;
+        background-color: #F4F4F4;
+        padding: 5px;
+        font-size: 12px;
+      }
+
+      .ok-btn {
+        font-size: 14px;
+        font-weight: bold;
+        background-color: #ffedab;
+        display: block;
+        margin: 15px auto 0;
+        padding: 2px 15px;
+        border: 1px solid black;
+        border-radius: 15px;
+        text-align: center;
+      }
+    }
+
+    .cooking-search {
+      background-color: #bcbace;
+      font-size: 16px;
+      font-family: '筑紫A丸ゴシック';
+      text-align: center;
 
       .search-heading {
         font-weight: bold;
