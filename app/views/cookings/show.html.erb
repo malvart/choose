@@ -17,18 +17,32 @@
           <%= image_tag 'no_image_yoko.jpeg', class: 'cooking-frame' %>
           <% end %>
         </div>
+
         <div class='ingredient'>
           <div class='ingredient-title'>─ 材料 ─</div>
+          <div class='recipe-box'>
+            <% if @cooking.recipe.present? %>
+            　<%= @cooking.recipe.plate %>人前
+            <%= @cooking.recipe.ingredient %>
+            <% end %>
+          </div>
         </div>
       </div>
 
       <div class='show-right'>
         <div class='show-recipe'>─ レシピ ─</div>
+        <div class='recipe-box'>
+          <% if @cooking.recipe.present? %>
+          　所要時間　約<%= @cooking.recipe.duration %>分
+          <%= @cooking.recipe.process %>
+          <% end %>
+        </div>
       </div>
     </div>
 
     <div class='show-cooking-btns'>
       <%= link_to "料理情報を編集する", edit_cooking_path, method: :get, class: 'edit-btn' %>
+      <%= link_to "レシピを編集する", new_cooking_recipes_path(@cooking.id), class: 'recipe-edit-btn' %>
       <%= link_to "! この料理を削除する !", cooking_path, method: :delete, class: 'delete-btn' %>
     </div>
   </div>

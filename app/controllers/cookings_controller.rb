@@ -98,7 +98,7 @@ class CookingsController < ApplicationController
     render json:{ keyword: category }
   end
 
-  def search
+  def categorySearch
     keyword = params[:q]
     @q = Category.ransack(keyword)
     @result = @q&.result
