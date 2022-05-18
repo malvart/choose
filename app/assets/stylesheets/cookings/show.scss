@@ -10,6 +10,16 @@
     margin-bottom: 30px;
   }
 
+  .recipe-box{
+    white-space: pre-line;
+    background-color: white;
+    border: 1.5px solid #00000080;
+    border-radius: 15px;
+    margin: 5px 20px;
+    padding: 0 10px 15px;
+    min-height: 90%;
+  }
+
   .show-half {
     display: flex;
     justify-content: space-between;
@@ -71,6 +81,16 @@
       font-size: 20px;
       color: white;
       background-color: #4753a2;
+      padding: 5px 15px;
+      border: 2px solid rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .recipe-edit-btn {
+      font-size: 20px;
+      color: white;
+      background-color: #915da3;
       padding: 5px 15px;
       border: 2px solid rgba(0, 0, 0, 0.5);
       border-radius: 10px;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_11_033104) do
+ActiveRecord::Schema.define(version: 2022_05_17_072229) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +55,17 @@ ActiveRecord::Schema.define(version: 2022_05_11_033104) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "ingredient", null: false
+    t.text "process", null: false
+    t.integer "duration", null: false
+    t.integer "plate", null: false
+    t.bigint "cooking_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cooking_id"], name: "index_recipes_on_cooking_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -71,4 +82,5 @@ ActiveRecord::Schema.define(version: 2022_05_11_033104) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cooking_categories", "categories"
   add_foreign_key "cooking_categories", "cookings"
+  add_foreign_key "recipes", "cookings"
 end

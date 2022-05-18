@@ -1,0 +1,50 @@
+<%= render partial: "cookings/header" %>
+
+<div class='top-contents'>
+  <div class='new-recipe-content'>
+    <div class='form-title'><%= @cooking.cooking_name %>のレシピ</div>
+    <%= form_with model: @recipe, url: cooking_recipes_path, id: 'new_cooking', local: true do |f| %>
+
+    <div class='form'>
+      <div class='cooking-name'>
+        <div class='form-heading'>
+          お料理工程
+        </div>
+        <%= f.text_area :process, class:'cooking-text', value:"❶\n❷\n❸\n❹\n❺\n❻\n❼\n❽\n❾" %>
+      </div>
+    </div>
+
+    <div class='form'>
+      <div class='cooking-name'>
+        <div class='form-heading'>
+          料理に使う具材
+        </div>
+        <div class='cat'>
+          <div class='form-flex'>
+            　　<%= f.number_field :plate, {class:"select-box", id:'category'} %>人分
+          </div>
+        </div>
+        <%= f.text_area :ingredient, class:'cooking-text', value:"❶醤油　大さじ1\n❷長ねぎ　1本\n❸\n❹\n❺" %>
+      </div>
+    </div>
+
+    <div class='form'>
+      <div class='cat'>
+        <div class='form-heading'>
+          かかる時間
+        </div>
+        <div class='form-flex'>
+          およそ<%= f.number_field :duration, {class:"select-box", id:'category'} %>分　　
+        </div>
+      </div>
+    </div>
+
+    <div class='form-btn-content'>
+      <%= f.submit "入力OK!", class:'ok-btn' %>
+    </div>
+
+    <% end %>
+  </div>
+</div>
+
+<%= render partial: "cookings/footer" %>

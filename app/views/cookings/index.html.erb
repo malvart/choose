@@ -134,7 +134,7 @@
 
       <div class='category-search' , id='main-flame'>
         <div class='search-heading'>カテゴリー検索</div>
-        <%= search_form_for @q, url: search_cookings_path, local: true do |f| %>
+        <%= search_form_for @q, url: categorySearch_cookings_path, local: true do |f| %>
         <%= f.text_field :category_name_cont, class:'search-text', placeholder:'検索ワードを入力', id:'new-cat' %>
         <div id="search-result"></div>
         <%= f.submit '検索', class:'ok-btn' %>

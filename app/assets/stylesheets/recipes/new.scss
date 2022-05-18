@@ -1,0 +1,73 @@
+.new-recipe-content {
+  font-family: '筑紫A丸ゴシック';
+  width: 800px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+
+  .form {
+    margin: 30px;
+
+    .form-heading {
+      font-size: 24px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .cooking-text {
+      font-size: 20px;
+      width: 80%;
+      height: 300px;
+      padding: 15px;
+      display: block;
+      margin: auto;
+      border: 1.5px solid black;
+      border-radius: 20px;
+    }
+
+    .cat {
+      width: 300px;
+      margin: 0 auto 0;
+
+      .form-flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .select-box {
+      font-size: 16px;
+      width: 20%;
+      padding: 2px;
+      margin: 5px;
+      border: 1.5px solid black;
+      border-radius: 20px;
+      text-align: end;
+    }
+  }
+
+  .form-title {
+    font-weight: bold;
+    width: 450px;
+    text-align: center;
+    font-size: 30px;
+    border-bottom: 3px dashed black;
+    margin: 10px auto 60px;
+  }
+
+  .form-btn-content {
+    margin: 50px 0 15px;
+
+    .ok-btn {
+      font-size: 20px;
+      font-weight: bold;
+      background-color: #ffedab;
+      display: block;
+      margin: auto;
+      padding: 2px 15px;
+      border: 1.5px solid black;
+      border-radius: 20px;
+      text-align: center;
+    }
+  }
+}
