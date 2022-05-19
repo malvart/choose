@@ -4,4 +4,5 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   has_many :cookings
+  has_many :favorites, dependent: :destroy
 end
