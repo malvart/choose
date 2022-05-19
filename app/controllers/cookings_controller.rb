@@ -85,22 +85,19 @@ class CookingsController < ApplicationController
     cooking_ids = @q1&.result.pluck(:cooking_id)
     @result1 = []
     cooking_ids.uniq.each do |num|
-      if cooking_ids.group_by(&:itself)[num].length == cat_count
-        @result1 << num
-      end
+      @result1 << num if cooking_ids.group_by(&:itself)[num].length == cat_count
     end
 
     q2 = Cooking.order('RAND()').limit(1).ransack(id_eq: @result1&.sample)
     @result2 = q2&.result
-    if cat_count >= 1 && @result1.empty?
-      @result2 = nil
-    end
+    @result2 = nil if cat_count >= 1 && @result1.empty?
   end
 
   def incrementalSearch
-    return nil if params[:keyword] == ""
-    category = Category.where(['category_name LIKE ?', "%#{params[:keyword]}%"] )
-    render json:{ keyword: category }
+    return nil if params[:keyword] == ''
+
+    category = Category.where(['category_name LIKE ?', "%#{params[:keyword]}%"])
+    render json: { keyword: category }
   end
 
   def categorySearch
