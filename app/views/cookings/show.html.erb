@@ -4,6 +4,9 @@
     <div class='show-heading'>
       <%= @cooking.cooking_name %>
     </div>
+    <div class='user-name'>
+      <%= link_to "by #{@cooking.user.nickname}さん", user_path(@cooking.user_id) %>
+    </div>
 
     <div class='show-half'>
       <div class='show-left'>

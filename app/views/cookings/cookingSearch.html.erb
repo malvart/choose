@@ -5,11 +5,11 @@
 
   <div class='category-name-box'>
     <% @result.each do |r| %>
+    <%= link_to cooking_path(r.id), method: :get, class: "show-link" do %>
     <div class='category-name'>
-      <%= link_to cooking_path(r.id), method: :get, class: "show-link" do %>
       <%= r.cooking_name %>
-      <% end %>
     </div>
+    <% end %>
     <% end %>
   </div>
 
