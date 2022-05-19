@@ -7,10 +7,10 @@ $(function (){
   const cat4 = $('#cat4');
   
   $(window).on('load', categoryCheck);
-  $('#q_category_id_eq').on('change', categoryCheck);
+  $('#q_category_id_in').on('change', categoryCheck);
 
   function categoryCheck(){
-    let catVal = $('#q_category_id_eq').val();
+    let catVal = $('#q_category_id_in').val();
     if (catVal == 1){
       $('#form-cat2').after(cat2);
       cat3.remove();

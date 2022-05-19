@@ -41,7 +41,7 @@ def find_cooking
 end
 
 def varify_user
-  redirect_to root_path unless current_user.id == @cooking.user_id
+  redirect_to root_path unless current_user == @cooking.user
 end
 
 end

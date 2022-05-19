@@ -9,7 +9,7 @@
         <div class='form-heading'>
           カテゴリー
         </div>
-        <%= f.collection_select :category_id_eq, Category.where(id: @cat_range1), :id, :category_name, include_blank: "全体から" %>
+        <%= f.collection_select(:category_id_in, Category.where(id: @cat_range1), :id, :category_name, {include_blank: "全体から" }) %>
       </div>
     </div>
 
@@ -18,7 +18,7 @@
         <div class='form-heading'>
           主食
         </div>
-        <%= f.collection_select :category_id_eq, Category.where(id: @cat_range2), :id, :category_name, include_blank: "全体から" %>
+        <%= f.collection_select(:category_id_in, Category.where(id: @cat_range2), :id, :category_name, {include_blank: "全体から" }) %>
       </div>
     </div>
 
@@ -27,7 +27,7 @@
         <div class='form-heading'>
           主菜
         </div>
-        <%= f.collection_select :category_id_eq, Category.where(id: @cat_range3), :id, :category_name, include_blank: "全体から" %>
+        <%= f.collection_select(:category_id_in, Category.where(id: @cat_range3), :id, :category_name, {include_blank: "全体から" }) %>
       </div>
     </div>
 
@@ -36,19 +36,16 @@
         <div class='form-heading'>
           副菜
         </div>
-        <%= f.collection_select :category_id_eq, Category.where(id: @cat_range4), :id, :category_name, include_blank: "全体から" %>
+        <%= f.collection_select(:category_id_in, Category.where(id: @cat_range4), :id, :category_name, {include_blank: "全体から" }) %>
       </div>
     </div>
-
-<%
-=begin%>
 
     <div class='form'>
       <div class='cat'>
         <div class='form-heading'>
           その他カテゴリー1
         </div>
-        <%= f.collection_select :category_id_eq, Category.where.not(id: @cat_range5), :id, :category_name, include_blank: "---" %>
+        <%= f.collection_select(:category_id_in, Category.where.not(id: @cat_range5), :id, :category_name,{ include_blank: "---" }) %>
       </div>
     </div>
 
@@ -57,7 +54,7 @@
         <div class='form-heading'>
           その他カテゴリー2
         </div>
-        <%= f.collection_select :category_id_eq, Category.where.not(id: @cat_range5), :id, :category_name, include_blank: "---" %>
+        <%= f.collection_select(:category_id_in, Category.where.not(id: @cat_range5), :id, :category_name,{ include_blank: "---" }) %>
       </div>
     </div>
 
@@ -66,12 +63,9 @@
         <div class='form-heading'>
           その他カテゴリー3
         </div>
-        <%= f.collection_select :category_id_eq, Category.where.not(id: @cat_range5), :id, :category_name, include_blank: "---" %>
+        <%= f.collection_select(:category_id_in, Category.where.not(id: @cat_range5), :id, :category_name,{ include_blank: "---" }) %>
       </div>
     </div>
-
-<%
-=end%>
 
     <div class='form-btn-content'>
       <%= f.submit 'Choose!', class:'ok-btn' %>

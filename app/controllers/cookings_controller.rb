@@ -69,11 +69,8 @@ class CookingsController < ApplicationController
 
   def chooseIndex
     keyword = params[:q]
-    @q1 = CookingCategory.order('RAND()').limit(1).ransack(keyword)
-    @result1 = @q1&.result
-    @result1.each do |r|
-      @q2 = Cooking.order('RAND()').limit(1).ransack(id_eq: r.cooking_id)
-    end
+    @q1 = CookingCategory.ransack(keyword)
+
     @cat_range1 = Range.new(1, 3)
     @cat_range2 = Range.new(4, 6)
     @cat_range3 = Range.new(7, 9)
@@ -83,13 +80,21 @@ class CookingsController < ApplicationController
 
   def chooseSearch
     keyword = params[:q]
-    @q1 = CookingCategory.order('RAND()').limit(1).ransack(keyword)
-    @result1 = @q1&.result
-    @result1.each do |r|
-      @q2 = Cooking.order('RAND()').limit(1).ransack(id_eq: r.cooking_id)
+    @q1 = CookingCategory.ransack(keyword)
+    cat_count = params[:q][:category_id_in].uniq.reject(&:blank?).length
+    cooking_ids = @q1&.result.pluck(:cooking_id)
+    @result1 = []
+    cooking_ids.uniq.each do |num|
+      if cooking_ids.group_by(&:itself)[num].length == cat_count
+        @result1 << num
+      end
     end
-    @result2 = @q2&.result
-    category_id = params[:q]
+
+    q2 = Cooking.order('RAND()').limit(1).ransack(id_eq: @result1&.sample)
+    @result2 = q2&.result
+    if cat_count >= 1 && @result1.empty?
+      @result2 = nil
+    end
   end
 
   def incrementalSearch
