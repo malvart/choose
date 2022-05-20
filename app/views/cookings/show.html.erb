@@ -5,7 +5,14 @@
       <%= @cooking.cooking_name %>
     </div>
     <div class='user-name'>
-      <%= link_to "by #{@cooking.user.nickname}さん", user_path(@cooking.user_id) %>
+      <%= link_to "by #{@cooking.user.nickname}さん", user_path(@cooking.user_id), class:'show-link user-name' %>
+    </div>
+    <div class='favorite-content'>
+      <% if @cooking.favorites.present? %>
+      <span>お気に入り</span><%= link_to "★", cooking_favorites_path(@cooking.id), method: :delete, class:'favorite' %><span><%= @cooking.favorites.length %></span>
+      <% else %>
+      <span>お気に入り</span><%= link_to "☆", cooking_favorites_path(@cooking.id), method: :post, class:'favorite' %><span><%= @cooking.favorites.length %></span>
+      <% end %>
     </div>
 
     <div class='show-half'>
@@ -13,9 +20,11 @@
         <div class='cooking-image'>
           <% if @cooking.image.attached? %>
           <%= image_tag @cooking.image, class: 'cooking-frame' %>
+          <% if user_signed_in? && current_user.id == @cooking.user_id %>
           <div class='delete-image'>
-            <%= link_to '画像削除', imageDestroy_cooking_path, method: :get, class:'delete-image' %>
+            <%= link_to '画像削除', imageDestroy_cooking_path, method: :get, class:'show-link delete-image' %>
           </div>
+          <% end %>
           <% else %>
           <%= image_tag 'no_image_yoko.jpeg', class: 'cooking-frame' %>
           <% end %>
@@ -43,7 +52,7 @@
       </div>
     </div>
 
-    <% if current_user.id == @cooking.user_id %>
+    <% if user_signed_in? && current_user.id == @cooking.user_id %>
     <div class='show-cooking-btns'>
       <%= link_to "料理情報を編集する", edit_cooking_path, method: :get, class: 'edit-btn' %>
       <% if @cooking.recipe.present? %>
