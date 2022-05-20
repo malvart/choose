@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :cookings do
     resource :recipes, only: [:new, :create, :edit, :update]
-    resource :favorite, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
 
     collection do
       get 'chooseIndex'
