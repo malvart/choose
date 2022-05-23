@@ -64,6 +64,16 @@
     text-align: center;
   }
 
+  .check-box {
+    display: flex;
+    justify-content: center;
+
+    .check {
+      transform: scale(1.5);
+      margin: auto 10px;
+    }
+  }
+
   .form-btn-content {
     margin: 50px 0 15px;
 

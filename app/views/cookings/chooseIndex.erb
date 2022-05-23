@@ -18,7 +18,7 @@
         <div class='form-heading'>
           主食
         </div>
-        <%= f.collection_select(:category_id_in, Category.where(id: @cat_range2), :id, :category_name, {include_blank: "全体から" }) %>
+        <%= f.collection_select(:category_id_in, Category.where(id: @cat_range2), :id, :category_name, {include_blank: "---" }) %>
       </div>
     </div>
 
@@ -27,7 +27,7 @@
         <div class='form-heading'>
           主菜
         </div>
-        <%= f.collection_select(:category_id_in, Category.where(id: @cat_range3), :id, :category_name, {include_blank: "全体から" }) %>
+        <%= f.collection_select(:category_id_in, Category.where(id: @cat_range3), :id, :category_name, {include_blank: "---" }) %>
       </div>
     </div>
 
@@ -36,7 +36,7 @@
         <div class='form-heading'>
           副菜
         </div>
-        <%= f.collection_select(:category_id_in, Category.where(id: @cat_range4), :id, :category_name, {include_blank: "全体から" }) %>
+        <%= f.collection_select(:category_id_in, Category.where(id: @cat_range4), :id, :category_name, {include_blank: "---" }) %>
       </div>
     </div>
 
@@ -69,10 +69,8 @@
 
     <div class='form'>
       <div class='check-box'>
-        <div class='form-heading'>
-          お気に入りから選ぶ
-        </div>
-        <input type='checkbox', name='from-favorites'>
+        <label>お気に入りの中から選ぶ</label>
+        <input type='checkbox', name='from-favorites', class='check'>
       </div>
     </div>
 
