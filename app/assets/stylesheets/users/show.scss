@@ -1,10 +1,17 @@
 .mypage-content {
+  width: 80%;
   padding: 30px;
+  margin: auto;
+  font-family: '筑紫A丸ゴシック';
 
   .mypage-heading {
-    font-family: '筑紫A丸ゴシック';
     font-size: 30px;
     font-weight: bold;
     text-align: center;
+  }
+
+  .cooking-lists {
+    display: flex;
+    justify-content: space-between;
   }
 }

@@ -38,16 +38,11 @@ class CookingsController < ApplicationController
     cooking_attributes = @cooking.attributes
     @cooking_form = CookingForm.new(cooking_attributes)
     category = CookingCategory.where(cooking_id: @cooking.id)
-    cat_id1 = category[0]
-    cat_id2 = category[1]
-    cat_id3 = category[2]
-    cat_id4 = category[3]
-    cat_id5 = category[4]
-    @cat1 = Category.where(id: cat_id1&.category_id)
-    @cat2 = Category.where(id: cat_id2&.category_id)
-    @cat3 = Category.where(id: cat_id3&.category_id)
-    @cat4 = Category.where(id: cat_id4&.category_id)
-    @cat5 = Category.where(id: cat_id5&.category_id)
+    @cat1 = Category.where(id: category[0]&.category_id)
+    @cat2 = Category.where(id: category[1]&.category_id)
+    @cat3 = Category.where(id: category[2]&.category_id)
+    @cat4 = Category.where(id: category[3]&.category_id)
+    @cat5 = Category.where(id: category[4]&.category_id)
   end
 
   def update
