@@ -84,11 +84,32 @@ class CookingsController < ApplicationController
     cat_count = params[:q][:category_id_in].uniq.reject(&:blank?).length
     cooking_ids = @q1&.result.pluck(:cooking_id)
     @result1 = []
+
     cooking_ids.uniq.each do |num|
       @result1 << num if cooking_ids.group_by(&:itself)[num].length == cat_count
     end
 
-    q2 = Cooking.order('RAND()').limit(1).ransack(id_eq: @result1&.sample)
+    if params["from-favorites"] == "on"
+      favorites = Favorite.ransack(user_id_eq: current_user.id)
+      fav_result = favorites&.result.pluck(:cooking_id)
+      fav_cooking_ids = {:id_eq => []}
+      if cat_count == 0
+        @result1 = Cooking.all.pluck(:id)
+      end
+      fav_result.each do |r|
+        if @result1.include?(r)
+          fav_cooking_ids[:id_eq] << r
+        end
+      end
+      fav_cooking_id = fav_cooking_ids[:id_eq].sample
+      if cat_count >= 1 && fav_cooking_id.nil?
+        return false
+      end
+      q2 = Cooking.order('RAND()').limit(1).ransack(id_eq: fav_cooking_id)
+    else
+      q2 = Cooking.order('RAND()').limit(1).ransack(id_eq: @result1&.sample)
+    end
+    
     @result2 = q2&.result
     @result2 = nil if cat_count >= 1 && @result1.empty?
   end
