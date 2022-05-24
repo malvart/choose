@@ -7,21 +7,35 @@
 
   <div class='cooking-lists'>
     <div class='user-cooking'>
-      <%= "#{@user.nickname}さんの作った料理" %>
-      <% @user.cookings.each do |cooking| %>
-      <%= link_to cooking_path(cooking.id) do %>
-      <%= cooking.cooking_name %>
-      <% end %>
-      <% end %>
+      <div class='list-heading'>
+        <%= "#{@user.nickname}さんの作った料理" %>
+      </div>
+      <ul>
+        <% @user.cookings.each do |cooking| %>
+        <li>
+          <%= link_to cooking_path(cooking.id) do %>
+          <%= cooking.cooking_name %>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
     </div>
+    <% if current_user == @user %>
     <div class='favorites'>
-      <%= "#{@user.nickname}さんのお気に入り料理" %>
-      <% @favorites.each do |favorite| %>
-      <%= link_to cooking_path(favorite.id) do %>
-      <%= favorite.cooking_name %>
-      <% end %>
-      <% end %>
+      <div class='list-heading'>
+        <%= "#{@user.nickname}さんのお気に入り料理" %>
+      </div>
+      <ul>
+        <% @favorites.each do |favorite| %>
+        <li>
+          <%= link_to cooking_path(favorite.id) do %>
+          <%= favorite.cooking_name %>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
     </div>
+    <% end %>
   </div>
 </div>
 
