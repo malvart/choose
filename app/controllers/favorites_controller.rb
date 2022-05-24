@@ -3,9 +3,7 @@ class FavoritesController < ApplicationController
 
   def create
     @cooking = Cooking.find(params[:cooking_id])
-    #if current_user.id != @cooking.user_id
-      @favorite = Favorite.create(user_id: current_user.id, cooking_id: @cooking.id)
-    #end
+    @favorite = Favorite.create(user_id: current_user.id, cooking_id: @cooking.id)
     redirect_back fallback_location: cooking_path(@cooking.id)
   end
 
@@ -15,5 +13,4 @@ class FavoritesController < ApplicationController
     @favorite.destroy
     redirect_back fallback_location: cooking_path(@cooking.id)
   end
-
 end

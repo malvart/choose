@@ -8,7 +8,7 @@
       <%= link_to "by #{@cooking.user.nickname}さん", user_path(@cooking.user_id), class:'show-link user-name' %>
     </div>
     <div class='favorite-content'>
-      <% if @cooking.favorites.present? %>
+      <% if @favorite.present? %>
       <span>お気に入り</span><%= link_to "★", cooking_favorites_path(@cooking.id), method: :delete, class:'favorite' %><span><%= @cooking.favorites.length %></span>
       <% else %>
       <span>お気に入り</span><%= link_to "☆", cooking_favorites_path(@cooking.id), method: :post, class:'favorite' %><span><%= @cooking.favorites.length %></span>

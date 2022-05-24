@@ -27,6 +27,7 @@ class CookingsController < ApplicationController
   end
 
   def show
+    @favorite = Favorite.where(cooking_id: @cooking.id, user_id: current_user.id)
   end
 
   def destroy
@@ -80,31 +81,64 @@ class CookingsController < ApplicationController
     cooking_ids = @q1&.result.pluck(:cooking_id)
     @result1 = []
 
+    # 絞る条件のカテゴリー数と登録された料理のカテゴリー数が一致するかどうか
     cooking_ids.uniq.each do |num|
       @result1 << num if cooking_ids.group_by(&:itself)[num].length == cat_count
     end
 
-    if params["from-favorites"] == "on"
+    # 自分が作った && お気に入り料理
+    if params['from-mycookings'] == 'on' && params['from-favorites'] == 'on'
+      mycookings = Cooking.ransack(user_id_eq: current_user.id)
+      mycook_result = mycookings&.result.pluck(:id)
+      fav_mycooking_ids = { id_eq: [] }
+      @result1 = Cooking.all.pluck(:id) if cat_count == 0
+      mycook_result.each do |r|
+        fav_mycooking_ids[:id_eq] << r if @result1.include?(r)
+      end
+
       favorites = Favorite.ransack(user_id_eq: current_user.id)
       fav_result = favorites&.result.pluck(:cooking_id)
-      fav_cooking_ids = {:id_eq => []}
-      if cat_count == 0
-        @result1 = Cooking.all.pluck(:id)
-      end
       fav_result.each do |r|
-        if @result1.include?(r)
-          fav_cooking_ids[:id_eq] << r
-        end
+        fav_mycooking_ids[:id_eq] << r if @result1.include?(r) && !fav_mycooking_ids[:id_eq].include?(r)
+      end
+      fav_mycooking_id = fav_mycooking_ids[:id_eq].sample
+      return false if cat_count >= 1 && fav_mycooking_id.nil?
+
+      q2 = Cooking.order('RAND()').limit(1).ransack(id_eq: fav_mycooking_id)
+
+    # 自分が作った料理
+    elsif params['from-mycookings'] == 'on'
+      mycookings = Cooking.ransack(user_id_eq: current_user.id)
+      mycook_result = mycookings&.result.pluck(:id)
+      mycooking_ids = { id_eq: [] }
+      @result1 = Cooking.all.pluck(:id) if cat_count == 0
+      mycook_result.each do |r|
+        mycooking_ids[:id_eq] << r if @result1.include?(r)
+      end
+      mycooking_id = mycooking_ids[:id_eq].sample
+      return false if cat_count >= 1 && mycooking_id.nil?
+
+      q2 = Cooking.order('RAND()').limit(1).ransack(id_eq: mycooking_id)
+
+    # お気に入り料理
+    elsif params['from-favorites'] == 'on'
+      favorites = Favorite.ransack(user_id_eq: current_user.id)
+      fav_result = favorites&.result.pluck(:cooking_id)
+      fav_cooking_ids = { id_eq: [] }
+      @result1 = Cooking.all.pluck(:id) if cat_count == 0
+      fav_result.each do |r|
+        fav_cooking_ids[:id_eq] << r if @result1.include?(r)
       end
       fav_cooking_id = fav_cooking_ids[:id_eq].sample
-      if cat_count >= 1 && fav_cooking_id.nil?
-        return false
-      end
+      return false if cat_count >= 1 && fav_cooking_id.nil?
+
       q2 = Cooking.order('RAND()').limit(1).ransack(id_eq: fav_cooking_id)
+
+    # その他
     else
       q2 = Cooking.order('RAND()').limit(1).ransack(id_eq: @result1&.sample)
     end
-    
+
     @result2 = q2&.result
     @result2 = nil if cat_count >= 1 && @result1.empty?
   end
@@ -112,7 +146,8 @@ class CookingsController < ApplicationController
   def incrementalSearch
     return nil if params[:keyword] == ''
 
-    category = Category.where(['category_name LIKE ?', "%#{params[:keyword]}%"])
+    desc_cat = Category.joins(:cooking_categories).group(:category_id).order('count(cooking_id) desc')
+    category = desc_cat.where(['category_name LIKE ?', "%#{params[:keyword]}%"])
     render json: { keyword: category }
   end
 
