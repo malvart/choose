@@ -20,7 +20,7 @@ class CookingsController < ApplicationController
     @cooking_form = CookingForm.new(cooking_form_params)
     if @cooking_form.valid?
       @cooking_form.save
-      redirect_to root_path
+      redirect_to cooking_path(Cooking.last.id)
     else
       render 'new'
     end
