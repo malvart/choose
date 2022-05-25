@@ -5,5 +5,5 @@ class Recipe < ApplicationRecord
     validates :duration
     validates :plate
   end
-  belongs_to :cooking, dependent: :destroy
+  belongs_to :cooking
 end
