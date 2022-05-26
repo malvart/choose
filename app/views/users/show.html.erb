@@ -13,7 +13,7 @@
       <ul>
         <% @user.cookings.each do |cooking| %>
         <li>
-          <%= link_to cooking_path(cooking.id) do %>
+          <%= link_to cooking_path(cooking.id), class:"show-link" do %>
           <%= cooking.cooking_name %>
           <% end %>
         </li>
@@ -28,7 +28,7 @@
       <ul>
         <% @favorites.each do |favorite| %>
         <li>
-          <%= link_to cooking_path(favorite.id) do %>
+          <%= link_to cooking_path(favorite.id), class:"show-link" do %>
           <%= favorite.cooking_name %>
           <% end %>
         </li>
