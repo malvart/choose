@@ -27,7 +27,7 @@ class CookingsController < ApplicationController
   end
 
   def show
-    @favorite = Favorite.where(cooking_id: @cooking.id, user_id: current_user.id)
+    @favorite = Favorite.where(cooking_id: @cooking.id, user_id: current_user&.id)
   end
 
   def destroy
