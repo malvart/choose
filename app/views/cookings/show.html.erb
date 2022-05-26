@@ -54,10 +54,14 @@
 
     <div class='category-list'>
       <%= "#{@cooking.cooking_name}のカテゴリー：" %>
+      <% if @categories.present? %>
       <% @categories.each do |category| %>
       <%= link_to category_path(category.id), method: :get, class: "show-link" do %>
       <%= category.category_name %>
       <% end %>
+      <% end %>
+      <% else %>
+      なし
       <% end %>
     </div>
 
