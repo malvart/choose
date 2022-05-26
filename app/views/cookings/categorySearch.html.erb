@@ -1,7 +1,12 @@
 <%= render partial: "header" %>
 
 <div class='search-result'>
-  <div class='result-heading'>検 索 結 果</div>
+  <div class='result-heading'>
+  <% unless @keyword[:category_name_cont].blank? %>
+  <%= "『#{@keyword[:category_name_cont]}』の " %>
+  <% end %>
+  検 索 結 果
+  </div>
 
   <div class='category-name-box'>
     <% @result.each do |r| %>

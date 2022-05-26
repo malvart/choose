@@ -154,15 +154,15 @@ class CookingsController < ApplicationController
   end
 
   def categorySearch
-    keyword = params[:q]
+    @keyword = params[:q]
     desc_cat = Category.joins(:cooking_categories).group(:category_id).order('count(cooking_id) desc')
-    @q = desc_cat.ransack(keyword)
+    @q = desc_cat.ransack(@keyword)
     @result = @q&.result
   end
 
   def cookingSearch
-    keyword = params[:q]
-    @q = Cooking.order('cooking_name ASC').ransack(keyword)
+    @keyword = params[:q]
+    @q = Cooking.order('cooking_name ASC').ransack(@keyword)
     @result = @q&.result
   end
 
