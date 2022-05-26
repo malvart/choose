@@ -1,0 +1,18 @@
+<%= render partial: "cookings/header" %>
+
+<div class='search-result'>
+  <div class='result-heading'><%= "カテゴリー：#{@category.category_name}" %></div>
+
+  <div class='category-name-box'>
+    <% @cookings.each do |cooking| %>
+    <%= link_to cooking_path(cooking.id), method: :get, class: "show-link" do %>
+    <div class='category-name'>
+      <%= cooking.cooking_name %>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+
+</div>
+
+<%= render partial: "cookings/footer" %>

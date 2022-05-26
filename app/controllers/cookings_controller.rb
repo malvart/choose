@@ -28,6 +28,8 @@ class CookingsController < ApplicationController
 
   def show
     @favorite = Favorite.where(cooking_id: @cooking.id, user_id: current_user&.id)
+    cooking_categories = CookingCategory.where(cooking_id: @cooking.id).pluck(:category_id)
+    @categories = Category.where(id: cooking_categories)
   end
 
   def destroy
