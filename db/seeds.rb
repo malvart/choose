@@ -10,8 +10,8 @@ cats.each do |cat|
 end
 
 User.create!(
-  nickname: "テスト"
-  email: "test@test"
+  nickname: "テスト",
+  email: "test@test",
   password: "123qwe"
 )
 
@@ -21,14 +21,14 @@ cookings = [
 
 cookings.each do |cooking|
   Cooking.create!(
-    cooking_name: "#{cooking}"
+    cooking_name: "#{cooking}",
     user_id: 1
   )
 end
 
 3.times do |n|
   CookingCategory.create!(
-    cooking_id: n + 1
+    cooking_id: n + 1,
     category_id: n + 1
   )
 end
