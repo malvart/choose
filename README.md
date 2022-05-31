@@ -51,78 +51,6 @@ https://choose-20973.herokuapp.com/
 ## ER図
 [![Image from Gyazo](https://i.gyazo.com/a4f036a57436d51640c464a39d834724.png)](https://gyazo.com/a4f036a57436d51640c464a39d834724)
 
-## テーブル設計
-### Usersテーブル
-
-|Column  |Type  |Options                  |
-|--------|------|-------------------------|
-|nickname|string|null: false, unique: true|
-|email   |string|null: false, unique: true|
-|password|string|null: false              |
-
-#### Association
-- has_many :cookings
-- has_many :favorites, dependent: :destroy
-
-### Cookingsテーブル
-
-|Column      |Type      |Options                       |
-|------------|----------|------------------------------|
-|cooking_name|string    |null: false                   |
-|user_id     |references|null: false, foreign_key: true|
-
-#### Association
-- belongs_to :user
-- has_many :cooking_categories, dependent: :destroy
-- has_many :categories, through: :cooking_categories
-- has_many :favorites, dependent: :destroy
-- has_one :recipe, dependent: :destroy
-
-### Cookingsテーブル
-
-|Column       |Type  |Options    |
-|-------------|------|-----------|
-|category_name|string|null: false|
-
-#### Association
-- has_many :cooking_categories
-- has_many :cookings, through: :cooking_categories
-  
-### CookingCategoriesテーブル
-
-|Column     f|Type   |Options                       |
-|-----------|-------|------------------------------|
-|cooking_id |integer|null: false, foreign_key: true|
-|category_id|integer|null: false, foreign_key: true|
-
-#### Association
-- belongs_to :cooking
-- belongs_to :category
-
-### Favoritesテーブル
-
-|Column    |Type   |Options                       |
-|----------|-------|------------------------------|
-|user_id   |integer|null: false, foreign_key: true|
-|cooking_id|integer|null: false, foreign_key: true|
-
-#### Association
-- belongs_to :user
-- belongs_to :cooking
-
-### Recipesテーブル
-
-|Column    |Type   |Options                       |
-|----------|-------|------------------------------|
-|plate     |integer|null: false                   |
-|ingredient|text   |null: false                   |
-|process   |text   |null: false                   |
-|duration  |integer|null: false                   |
-|cooking_id|integer|null: false, foreign_key: true|
-
-#### Association
-- belongs_to :cooking
-
 # 画面遷移図
 [![Image from Gyazo](https://i.gyazo.com/2578a876572e2e390c15ca7def45cab5.png)](https://gyazo.com/2578a876572e2e390c15ca7def45cab5)
 
@@ -130,4 +58,8 @@ https://choose-20973.herokuapp.com/
 Ruby/Ruby on Rails/MySQL/Github/Heroku/Visual Studio Code/JavaScript/HTML/CSS
 
 # 工夫したポイント
-- 一つ実装を終える度に自分で実際に触ってみて、ユーザー視点で改良点や追加すべき機能を探しました
+- このアプリケーションを作る前に、プロトタイプを作りました。<br>
+  理由は、カリキュラムとは別で、自分で要件定義から設計することが初めてで、いきなり本番だと後で変更が効かないミスや設計段階での不備が出ると考えたためです。<br>
+  実際、プロトタイプと本番では設計から大きく変更がありました。また、設計周りの理解にも繋がりました。<br>
+  [ChooseのプロトタイプのGitHubページ](https://github.com/malvart/proto-choose)
+- 一つ実装を終える度に自分で実際に触ってみて、ユーザー視点で改良点や追加すべき機能を探しました。
