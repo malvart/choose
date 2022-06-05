@@ -26,6 +26,10 @@
     color: #ffdc00; //ジョンブリアン
   }
 
+  .app-name:hover {
+    filter: brightness(105%);
+  }
+
   .header-right {
     display: flex;
     padding-top: 5px;
@@ -38,6 +42,10 @@
       border-radius: 15px;
       padding: 0 12px;
       color: #043c78;
+    }
+
+    .choose-cooking:hover {
+      filter: brightness(105%);
     }
 
     .authentication {
@@ -60,6 +68,10 @@
         border-radius: 15px;
         padding: 4px 10px;
         color: #043c78;
+      }
+
+      .sign-up:hover, .rog-in:hover {
+        filter: brightness(105%);
       }
     }
   }

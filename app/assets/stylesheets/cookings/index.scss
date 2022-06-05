@@ -18,6 +18,7 @@ a {
     border: 2px dashed #192f6050; //アイアンブルー
     border-radius: 30px;
     padding: 25px 30px;
+    filter: drop-shadow(0 0 3px gray);
   }
 
   .main-content {
@@ -51,6 +52,16 @@ a {
         border-radius: 15px;
         padding: 0 8px;
       }
+
+      a:hover {
+        filter: brightness(103%);
+      }
+
+      a:active {
+        border: 1.5px solid #001e43df;
+        margin: 2.8px 5px 1px 6.8px;
+        filter: none;
+      }
     }
   }
 
@@ -75,6 +86,10 @@ a {
         padding: 6px 10px 7px;
         border: 1.5px solid #00000080;
         border-radius: 5px;
+      }
+
+      a:hover {
+        filter: brightness(103%);
       }
     }
 
@@ -175,6 +190,11 @@ a {
           border: 1.5px solid #00000080;
           border-radius: 5px;
           margin-right: 14px;
+          box-shadow: 0 0 5px gray;
+        }
+
+        #slide-image:hover {
+          filter: brightness(103%);
         }
 
         .slide-name {
@@ -197,49 +217,6 @@ a {
       font-family: '筑紫A丸ゴシック';
       text-align: center;
       margin-bottom: 20px;
-
-      .search-heading {
-        font-weight: bold;
-      }
-
-      .search-text {
-        width: 100%;
-        font-size: 14px;
-        padding: 0 7px;
-        margin-top: 5px;
-        border: 1px solid black;
-        border-radius: 5px;
-      }
-
-      #search-result {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .child {
-        width: 100%;
-        text-align: center;
-        margin-top: 5px;
-        border: 1px solid #dedede;
-        border-radius: 5px;
-        background-color: #F4F4F4;
-        padding: 5px;
-        font-size: 12px;
-      }
-
-      .ok-btn {
-        font-size: 14px;
-        font-weight: bold;
-        background-color: #ffedab;
-        display: block;
-        margin: 15px auto 0;
-        padding: 2px 15px;
-        border: 1px solid black;
-        border-radius: 15px;
-        text-align: center;
-      }
     }
 
     .cooking-search {
@@ -247,49 +224,53 @@ a {
       font-size: 16px;
       font-family: '筑紫A丸ゴシック';
       text-align: center;
+    }
 
-      .search-heading {
-        font-weight: bold;
-      }
+    .search-heading {
+      font-weight: bold;
+    }
 
-      .search-text {
-        width: 100%;
-        font-size: 14px;
-        padding: 0 7px;
-        margin-top: 5px;
-        border: 1px solid black;
-        border-radius: 5px;
-      }
+    .search-text {
+      width: 100%;
+      font-size: 14px;
+      padding: 0 7px;
+      margin-top: 5px;
+      border: 1px solid black;
+      border-radius: 5px;
+    }
 
-      #search-result {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+    #search-result {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-      .child {
-        width: 100%;
-        text-align: center;
-        margin-top: 5px;
-        border: 1px solid #dedede;
-        border-radius: 5px;
-        background-color: #F4F4F4;
-        padding: 5px;
-        font-size: 12px;
-      }
+    .child {
+      width: 100%;
+      text-align: center;
+      margin-top: 5px;
+      border: 1px solid #dedede;
+      border-radius: 5px;
+      background-color: #F4F4F4;
+      padding: 5px;
+      font-size: 12px;
+    }
 
-      .ok-btn {
-        font-size: 14px;
-        font-weight: bold;
-        background-color: #ffedab;
-        display: block;
-        margin: 15px auto 0;
-        padding: 2px 15px;
-        border: 1px solid black;
-        border-radius: 15px;
-        text-align: center;
-      }
+    .ok-btn {
+      font-size: 14px;
+      font-weight: bold;
+      background-color: #ffedab;
+      display: block;
+      margin: 15px auto 0;
+      padding: 2px 15px;
+      border: 1px solid black;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .ok-btn:hover {
+      filter: brightness(103%);
     }
   }
 }
