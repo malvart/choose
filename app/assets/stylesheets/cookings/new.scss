@@ -98,6 +98,7 @@
     border: 1.5px solid black;
     border-radius: 20px;
     text-align: center;
+    cursor: pointer;
   }
 
   .preview-image {
@@ -120,6 +121,8 @@
       border: 1.5px solid black;
       border-radius: 20px;
       text-align: center;
+      cursor: pointer;
+
     }
 
     .img-file {
@@ -140,6 +143,11 @@
       border: 1.5px solid black;
       border-radius: 20px;
       text-align: center;
+      cursor: pointer;
+    }
+    
+    .ok-btn:hover {
+      filter: brightness(103%);
     }
   }
 
