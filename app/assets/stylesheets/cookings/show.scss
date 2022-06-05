@@ -113,6 +113,10 @@
       border: 2px solid rgba(0, 0, 0, 0.5);
       border-radius: 10px;
     }
+
+    #show-btn:hover {
+      filter: brightness(108%);
+    }
   }
 
   .favorite-content {
@@ -124,6 +128,10 @@
       color: gold;
       text-shadow: 1px 0 0 black, 0 1px 0 black, -1px 0 0 black, 0 -1px 0 black,
         0.7px 0.7px 0 black, -0.7px 0.7px 0 black, -0.7px -0.7px 0 black, 0.7px -0.7px 0 black;
+    }
+
+    .favorite:hover {
+      filter: brightness(105%);
     }
 
     span {
