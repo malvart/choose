@@ -16,12 +16,12 @@ RSpec.describe User, type: :model do
       it 'nicknameが空では登録できない' do
         @user.nickname = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("ニックネームを入力してください")
+        expect(@user.errors.full_messages).to include("ユーザーネームを入力してください")
       end
       it 'emailが空では登録できない' do
         @user.email = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Eメールを入力してください")
+        expect(@user.errors.full_messages).to include("メールアドレスを入力してください")
       end
       it 'passwordが空では登録できない' do
         @user.password = ''
@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
         @user.save
         another_user = FactoryBot.build(:user, nickname: @user.nickname)
         another_user.valid?
-        expect(another_user.errors.full_messages).to include("ニックネームはすでに存在します")
+        expect(another_user.errors.full_messages).to include("ユーザーネームはすでに存在します")
       end
 
       it 'passwordが5文字以下では登録できない' do
@@ -59,12 +59,12 @@ RSpec.describe User, type: :model do
         @user.save
         another_user = FactoryBot.build(:user, email: @user.email)
         another_user.valid?
-        expect(another_user.errors.full_messages).to include("Eメールはすでに存在します")
+        expect(another_user.errors.full_messages).to include("メールアドレスはすでに存在します")
       end
       it 'emailは@を含まないと登録できない' do
         @user.email = 'testmail'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Eメールは不正な値です")
+        expect(@user.errors.full_messages).to include("メールアドレスは不正な値です")
       end
     end
   end
