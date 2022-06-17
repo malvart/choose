@@ -5,4 +5,6 @@ class Cooking < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_one :recipe, dependent: :destroy
   has_one_attached :image
+
+  validates :cooking_name, presence: true
 end
